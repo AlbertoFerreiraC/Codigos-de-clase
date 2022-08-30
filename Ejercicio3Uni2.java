@@ -1,17 +1,23 @@
 package clases;
 
+/**
+ *
+ * @author falberto
+ */
 import java.io.*;
+import java.util.Scanner;
 
 public class Ejercicio3Uni2 {
 
     public static void main(String args[]) throws IOException {
         BufferedReader bufEntrada = new BufferedReader(new InputStreamReader(System.in));
         String a[];
-        int n;
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Ingrese la cantidad de elementos del vector");
+        int n = leer.nextInt();
+        a = new String[n];
         String ultimo;
         int x;
-        n = 3;
-        a = new String[n];
         for (x = 1; x <= n; x++) {
             System.out.println("Ingrese el valor para el elemento " + x + " del Vector A");
             a[x - 1] = bufEntrada.readLine();
