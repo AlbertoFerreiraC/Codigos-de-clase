@@ -8,11 +8,16 @@ package Arboles;
 public class Arbol1810 { //Arbol 18-10-2022
 
     private NodoArbol raiz;
+    String nombre;
+    int cedula;
 
     //construir un objeto Arbol vacio de enteros
     public Arbol1810() {
         raiz = null;
+        nombre = "";
+        cedula = 0;
     }
+
 
     //insertar un nuevo nodo en el arbol de busqueda binaria
     public void insertarNodo(int valorInsertar) {

@@ -33,7 +33,8 @@ public class NodoArbol1810 {
             //insertar nuevo NodoArbol
             if (nodoDerecho == null) {
                 nodoDerecho = new NodoArbol(valorInsertar);
-            } else { //continuar recorriendo subarbol derecho
+            } else {//continuar recorriendo subarbol derecho
+            
                 nodoDerecho.insertar(valorInsertar);
             }
         }
