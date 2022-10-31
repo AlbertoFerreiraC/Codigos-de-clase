@@ -1,53 +1,74 @@
-package Arboles;
+package tarea11;
 
-import javax.swing.JOptionPane;
-
-/**
- *
- * @author falberto
+/*
+falberto
  */
 public class NodoArbol {
 
-    NodoArbol nodoIzquierdo;
-    int datos;
-    NodoArbol nodoDerecho;
-    boolean bool;
+    NodoArbol NodoIzquierdo;
+    int ci;
+    String nombre;
+    int edad;
+    NodoArbol NodoDerecho;
 
-    //inicializar datos y hacer de este nodo un nodo hoja
-    public NodoArbol(int datosNodo) {
-        datos = datosNodo;
-        nodoIzquierdo = nodoDerecho = null; //el nodo no tiene hijos
-        bool = false;
+    public NodoArbol(int datosNodo, String nom, int ed) {
+        ci = datosNodo;
+        nombre = nom;
+        edad = ed;
+        NodoIzquierdo = NodoDerecho = null;
+
     }
 
-    //localizar punto de inserción e insertar nuevo nodo
-    //ignorar valores duplicados
-    public boolean insertar(int valorInsertar) {
-        bool = false;
-        //insertar en subarbol izquierdo
-        if (valorInsertar < datos) {
-            //insertar nuevo nodo
-            if (nodoIzquierdo == null) {
-                nodoIzquierdo = new NodoArbol(valorInsertar);
-            } else //continuar recorriendo subarbol izquierdo
-            {
-                nodoIzquierdo.insertar(valorInsertar);
+    public void insertar(int valorInsertar, String nom, int ed) {
+        //insertar en subarbolizquierdo
+        if (valorInsertar < ci) {
+            //insertar nuevo nodoarbol
+            if (NodoIzquierdo == null) {
+                NodoIzquierdo = new NodoArbol(valorInsertar, nom, ed);
+            } else {// continnuar recorriendo subarbol izquierdo
+                NodoIzquierdo.insertar(valorInsertar, nom, ed);
             }
-        } else if (valorInsertar > datos) {
+        } else if (valorInsertar > ci) {
             //insertar nuevo NodoArbol
-            if (nodoDerecho == null) {
-                nodoDerecho = new NodoArbol(valorInsertar);
-            } else //continuar recorriendo subarbol derecho
-            {
-                nodoDerecho.insertar(valorInsertar);
+            if (NodoDerecho == null) {
+                NodoDerecho = new NodoArbol(valorInsertar, nom, ed);
+            } else {
+                NodoDerecho.insertar(valorInsertar, nom, ed);
             }
         }
-        if (valorInsertar == datos) {
-            JOptionPane.showMessageDialog(null, "Duplicado");
-            return bool = false;
-        } else {
-            return bool = true;
-        }
+    }
+
+    public String Mensaje() {
+        return "Sus datos son:\nCI: " +
+                this.ci + "\nNombre: " +
+                this.nombre +
+                "\nEdad: " +
+                this.edad +
+                "\n";
+    }
+
+    public int getCi() {
+        return ci;
+    }
+
+    public void setCi(int ci) {
+        this.ci = ci;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
 }

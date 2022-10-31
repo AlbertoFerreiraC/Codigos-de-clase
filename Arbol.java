@@ -1,74 +1,77 @@
-
-package ArbolBinario;
-
-//definicion de la clase Arbol
-
-
-
+package tarea11;
+/*
+falberto
+*/
 public class Arbol {
-    private nodoArbol raiz;
     
-    //construir un objeto Arbol vacio de enteros
+    private NodoArbol raiz;
+    
     public Arbol(){
-        raiz = null;
+        raiz=null;
     }
     
-    //insertar un nuevo nodo en el arbol de busqueda binario
-    public void insertarNodo(int valorInsertar){
-        if (raiz == null)
-            raiz = new nodoArbol(valorInsertar );//crear el nodo raiz aqui
+    public void insertarNodo(int valorInsertar, String nom, int ed){
+        if (raiz==null)
+            raiz = new NodoArbol(valorInsertar, nom, ed);
         else
-            raiz.insertar(valorInsertar);//llamar al modoInsertar
+            raiz.insertar(valorInsertar, nom, ed);
+    }
     
-    }//fin del metodo insertarNodo
-    
-    //empezar recorrido preorden
     public void recorridoPreorden(){
         ayudantePreorden(raiz);
-    }//fin del recorridoPreorden
+    }
     
-    //metodo recursivo para realizar recorrido preorden
-    public void ayudantePreorden(nodoArbol nodo){
-        if(nodo==null)
+    public void ayudantePreorden(NodoArbol nodo){
+        if (nodo==null)
             return;
         
-        System.out.print(nodo.ci+" ");//muestra datos del nodo
-        ayudantePreorden(nodo.nodoIzquierdo);//recorre subarbol izquierdo
-        ayudantePreorden(nodo.nodoDerecho);//recorre subarbol derecho
-        
-    }//fin de ayudantePreorden
+        System.out.print(nodo.ci+" ");
+        ayudantePreorden(nodo.NodoIzquierdo);
+        ayudantePreorden(nodo.NodoDerecho);    
+    }
     
-    //empezar recorrido inorden
+    public NodoArbol recorridobuscar(int buscador){
+        NodoArbol aux=raiz;
+        while (aux.ci!=buscador){
+            if (buscador<aux.ci){
+                aux = aux.NodoIzquierdo;
+            }else{
+                aux = aux.NodoDerecho;
+            }
+            if (aux==null){
+                return null;
+            }  
+        }
+        return aux;
+    }
+    
     public void recorridoInorden(){
         ayudanteInorden(raiz);
-    }//fin del recorridoPreorden
+    }
     
-    //metodo recursivo para realizar recorrido preorden
-    public void ayudanteInorden(nodoArbol nodo){
-        if(nodo==null)
+    public void ayudanteInorden(NodoArbol nodo){
+        if (nodo==null)
             return;
-        ayudanteInorden(nodo.nodoIzquierdo);//recorre subarbol izquierdo
-        System.out.print(nodo.ci+" ");//muestra datos del nodo
-        ayudanteInorden(nodo.nodoDerecho);//recorre subarbol derecho
-    }//fin de ayudanteInorden 
+        
+        ayudanteInorden(nodo.NodoIzquierdo);
+        System.out.print(nodo.ci+" ");
+        ayudanteInorden(nodo.NodoDerecho);
+        
+    }
     
-    //empezar recorrido inorden
     public void recorridoPostorden(){
         ayudantePostorden(raiz);
-    }//fin del recorridoPreorden
+    }
     
-    //metodo recursivo para realizar recorrido preorden
-    public void ayudantePostorden(nodoArbol nodo){
-        if(nodo==null)
+    public void ayudantePostorden(NodoArbol nodo){
+        if (nodo==null)
             return;
-        ayudantePostorden(nodo.nodoIzquierdo);//recorre subarbol izquierdo
-        ayudantePostorden(nodo.nodoDerecho);//recorre subarbol derecho
-        System.out.print(nodo.ci+" ");//muestra datos del nodo
         
-    }//fin de ayudantePostorden 
-
-   
-
-   
+        ayudantePostorden(nodo.NodoIzquierdo);
+        ayudantePostorden(nodo.NodoDerecho);
+        System.out.print(nodo.ci+" ");
+        
+    }
     
-}//fin de la clase Arbol
+    
+}
