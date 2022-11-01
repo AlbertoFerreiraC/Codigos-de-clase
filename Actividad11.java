@@ -41,21 +41,18 @@ public class Actividad11 {
                     System.out.println("");
                     break;
                 case 2:
-                    System.out.println("Impresion en preOrden");
                     System.out.println("\n\nRecorrido preorden");
                     arbol.recorridoPreorden();
 
                     System.out.println("");
                     break;
                 case 3:
-                    System.out.println("Impresion en inOrden");
                     System.out.println("\n\nRecorrido inorden");
                     arbol.recorridoInorden();
 
                     System.out.println("");
                     break;
                 case 4:
-                    System.out.println("Impresion en postOrden");
                     System.out.println("\n\nRecorrido postorden");
                     arbol.recorridoPostorden();
 
@@ -63,17 +60,26 @@ public class Actividad11 {
                     break;
                 case 5:
                     System.out.println("Impresion del mayor numero");
-                    for (int i = 0; i < x.length && i < x.length; i++) {
-//          System.out.println(nombres[i] + " " + sueldos[i]);
-                        if (sueldos[i] > numeromayor) { // 
-                            numeromayor = sueldos[i];
-                            System.out.println(numeromayor);
-                        }
-                    }
-                    System.out.println("\n\nRecorrido postorden");
-                    arbol.recorridoPostorden();
 
                     System.out.println("");
+                    break;
+                case 6:
+                    System.out.println("Eliminar numero Ingresado");
+                    
+                    System.out.println("");
+                    break;
+                case 7:
+                    System.out.println("Buscar numero");
+                    System.out.println("Ingrese numero a buscar");
+                    buscar = teclado.nextInt();
+                    arbol.recorridobuscar(buscar);
+                    if (arbol.recorridobuscar(buscar) != null) {
+                        System.out.println("Se encontró el numero ingresado\n");
+
+                        System.out.println(arbol.recorridobuscar(buscar).Mensaje());
+                    } else {
+                        System.out.println("No se encontró el numero que esta buscando\n");
+                    }
                     break;
                 case 8:
                     salir = 1;

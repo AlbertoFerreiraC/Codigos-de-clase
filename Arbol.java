@@ -10,6 +10,7 @@ public class Arbol {
         raiz=null;
     }
     
+    
     public void insertarNodo(int valorInsertar, String nom, int ed){
         if (raiz==null)
             raiz = new NodoArbol(valorInsertar, nom, ed);
