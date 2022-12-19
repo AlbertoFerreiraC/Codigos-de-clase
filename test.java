@@ -1,55 +1,67 @@
-package clases;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
-/**
- *
- * @author falberto
- */
-public class test {
+public class test { //Examen Final Fila 2
 
     public static void main(String[] args) {
+        int n;
+        int mayor, menor;
+        int[] nota;
+        String[] nombre;
+        String[] correo;
+        int salir;
+        do {
+            String salida = "Nombre\tNota\tCorreo\n";
+            mayor = 0;
+            menor = 0;
+            do {
+                n = Integer.parseInt(JOptionPane.showInputDialog("Introduce cantidad de alumnos"));
+            } while (n <= 0);
+            nombre = new String[n];
+            nota = new int[n];
+            correo = new String[n];
 
-        Scanner sc = new Scanner(System.in);
+            for (int i = 0; i < n; i++) {
 
-        //creamos los arrays
-        String[] empleados = new String[3];
-        double[] sueldos = new double[3];
+                nombre[i] = JOptionPane.showInputDialog("Ingrese nombre del alumno: ");
+                nota[i] = Integer.parseInt(JOptionPane.showInputDialog("Acumulado del alumno " + nombre[i] + " :"));
+                correo[i] = JOptionPane.showInputDialog("Ingrese el correo del estudiante " + nombre[i] + " :");
+                if (!correo[i].contains("@")) { //Para controlar el correo
+                    JOptionPane.showMessageDialog(null, "El correo de " + nombre[i] + " es incompatible.");
+                    break;
+                }
 
-        //variables donde guardar el nombre y sueldo del empleado que más gana
-        String nombreMayor;
-        double mayorSueldo;
-
-        int i = 0;
-
-        //se lee el primer empleado
-        System.out.println("Lectura de nombres y sueldos de empleados: ");
-        System.out.print("Empleado " + (i + 1) + ": ");
-        empleados[i] = sc.nextLine();
-        System.out.print("Sueldo: ");
-        sueldos[i] = sc.nextDouble();
-
-        //se toma el primero leído como mayor
-        mayorSueldo = sueldos[i];
-        nombreMayor = empleados[i];
-
-        //se leen el resto de empleados
-        for (i = 1; i < empleados.length; i++) {
-            sc.nextLine(); //limpiar el buffer
-            System.out.print("Empleado " + (i + 1) + ": ");
-            empleados[i] = sc.nextLine();
-            System.out.print("Sueldo: ");
-            sueldos[i] = sc.nextDouble();
-            //se compara el sueldo leído con el mayor actual
-            if (sueldos[i] > mayorSueldo) {
-                mayorSueldo = sueldos[i];
-                nombreMayor = empleados[i];
+                if (nota[i] >= 40) {
+                    mayor = nota[i];
+                    JOptionPane.showMessageDialog(null, "Con posibilidad");
+                } else {
+                    menor = nota[i];
+                    JOptionPane.showMessageDialog(null, "Sin posibilidad");
+                }
             }
-        }
+            for (int x = 0; x < n; x++) {
+                salida += nombre[x] + "\t" + nota[x] + "\t" + correo[x] + "\n";
+            }
+            salida += "Nota menor: " + menor + "\n" + "Nota mayor: " + mayor;
+            JTextArea areaSalida = new JTextArea();
+            areaSalida.setText(salida);
 
-        //mostrar resultados
-        System.out.println("Empleado con mayor sueldo: " + nombreMayor);
-        System.out.println("Sueldo: " + mayorSueldo);
+            //para fecha del dia del sistema
+            Calendar c = new GregorianCalendar();
+            String dia, mes, anho;
+
+            dia = Integer.toString(c.get(Calendar.DATE));
+            mes = Integer.toString(c.get(Calendar.MONTH));
+            anho = Integer.toString(c.get(Calendar.YEAR));
+
+            JOptionPane.showMessageDialog(null, areaSalida, dia + "/" + mes + "/" + anho, JOptionPane.INFORMATION_MESSAGE);
+
+            salir = Integer.parseInt(JOptionPane.showInputDialog("Desea continuar?"));
+
+        } while (salir != 999);
+
     }
-
 }
