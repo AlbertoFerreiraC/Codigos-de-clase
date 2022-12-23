@@ -31,15 +31,19 @@ public class test { //Examen Final Fila 2
                 correo[i] = JOptionPane.showInputDialog("Ingrese el correo del estudiante " + nombre[i] + " :");
                 if (!correo[i].contains("@")) { //Para controlar el correo
                     JOptionPane.showMessageDialog(null, "El correo de " + nombre[i] + " es incompatible.");
+                    if (nota[i] >= 40) {
+                        JOptionPane.showMessageDialog(null, "Con posibilidad");
+                        mayor = nota[i];
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Sin posibilidad");
+                        menor = nota[i];
+                    }
+                    if (nota[i] > mayor) {
+                        mayor = nota[i];
+                    } else {
+                        menor = nota[i];
+                    }
                     break;
-                }
-
-                if (nota[i] >= 40) {
-                    mayor = nota[i];
-                    JOptionPane.showMessageDialog(null, "Con posibilidad");
-                } else {
-                    menor = nota[i];
-                    JOptionPane.showMessageDialog(null, "Sin posibilidad");
                 }
             }
             for (int x = 0; x < n; x++) {
