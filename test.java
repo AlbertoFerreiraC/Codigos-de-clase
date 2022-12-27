@@ -6,7 +6,7 @@ import javax.swing.JTextArea;
 
 public class test { //Examen Final Fila 2
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int n;
         int mayor, menor;
         int[] nota;
@@ -30,7 +30,6 @@ public class test { //Examen Final Fila 2
                 nota[i] = Integer.parseInt(JOptionPane.showInputDialog("Acumulado del alumno " + nombre[i] + " :"));
                 correo[i] = JOptionPane.showInputDialog("Ingrese el correo del estudiante " + nombre[i] + " :");
                 if (!correo[i].contains("@")) { //Para controlar el correo
-                    JOptionPane.showMessageDialog(null, "El correo de " + nombre[i] + " es incompatible.");
                     if (nota[i] >= 40) {
                         JOptionPane.showMessageDialog(null, "Con posibilidad");
                         mayor = nota[i];
@@ -43,7 +42,7 @@ public class test { //Examen Final Fila 2
                     } else {
                         menor = nota[i];
                     }
-                    break;
+                    throw new RuntimeException("El caracter '@' es obligatorio en el correo de " + nombre[i]);
                 }
             }
             for (int x = 0; x < n; x++) {
